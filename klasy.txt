@@ -1,0 +1,36 @@
+@startuml
+
+class Uzytkownik {
+  id : int
+  imie : String
+  email : String
+  haslo : String
+  rola : String
+}
+
+class Wydarzenie {
+  id : int
+  nazwa : String
+  data : Date
+  lokalizacja : String
+  opis : String
+}
+
+class Rezerwacja {
+  id : int
+  status : String
+}
+
+class Platnosc {
+  id : int
+  kwota : float
+  status : String
+  metodaPlatnosci : String
+}
+
+' RELACJE
+Uzytkownik "1" -- "0..*" Rezerwacja : posiada
+Wydarzenie "1" -- "0..*" Rezerwacja : dotyczy
+Rezerwacja "1" -- "1" Platnosc : ma
+
+@enduml

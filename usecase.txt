@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+
+actor "Uczestnik" as U
+actor "Organizator" as O
+actor "Administrator" as A
+actor "System płatności" as SP
+
+rectangle "System zarządzania wydarzeniami" {
+
+  ' UCZESTNIK
+  U -- (Rejestracja konta)
+  U -- (Logowanie)
+  U -- (Przeglądanie wydarzeń)
+  U -- (Zapis na wydarzenie)
+  U -- (Anulowanie udziału)
+  U -- (Dokonanie płatności)
+
+  (Dokonanie płatności) -- SP
+
+  ' ORGANIZATOR
+  O -- (Logowanie)
+  O -- (Tworzenie wydarzenia)
+  O -- (Edycja wydarzenia)
+  O -- (Usuwanie wydarzenia)
+  O -- (Zarządzanie uczestnikami)
+  O -- (Generowanie raportów)
+
+  ' ADMIN
+  A -- (Logowanie)
+  A -- (Zarządzanie użytkownikami)
+  A -- (Moderowanie wydarzeń)
+
+  ' RELACJE INCLUDE
+  (Zapis na wydarzenie) .> (Logowanie) : <<include>>
+  (Tworzenie wydarzenia) .> (Logowanie) : <<include>>
+  (Edycja wydarzenia) .> (Logowanie) : <<include>>
+  (Usuwanie wydarzenia) .> (Logowanie) : <<include>>
+
+}
+@enduml

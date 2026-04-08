@@ -1,0 +1,34 @@
+@startuml
+
+package "Warstwa prezentacji (UI)" {
+  [Interfejs użytkownika]
+}
+
+package "Warstwa logiki biznesowej" {
+  [Obsługa użytkowników]
+  [Obsługa wydarzeń]
+  [Obsługa rezerwacji]
+  [Obsługa płatności]
+}
+
+package "Warstwa dostępu do danych" {
+  [Repozytorium danych]
+}
+
+package "Warstwa integracji" {
+  [System płatności zewnętrzny]
+  [System e-mail]
+}
+
+' POŁĄCZENIA WARSTW
+[Interfejs użytkownika] --> [Obsługa użytkowników]
+[Interfejs użytkownika] --> [Obsługa wydarzeń]
+
+[Obsługa użytkowników] --> [Repozytorium danych]
+[Obsługa wydarzeń] --> [Repozytorium danych]
+[Obsługa rezerwacji] --> [Repozytorium danych]
+
+[Obsługa płatności] --> [System płatności zewnętrzny]
+[Obsługa użytkowników] --> [System e-mail]
+
+@enduml

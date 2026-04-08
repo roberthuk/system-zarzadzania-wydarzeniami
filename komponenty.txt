@@ -1,0 +1,14 @@
+@startuml
+
+package "System zarządzania wydarzeniami" {
+
+  [Frontend] --> [Backend]
+
+  [Backend] --> [Baza danych]
+  [Backend] --> [Moduł płatności]
+  [Backend] --> [Moduł powiadomień]
+
+  [Moduł płatności] --> [Zewnętrzny system płatności]
+}
+
+@enduml
